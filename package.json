@@ -1,0 +1,27 @@
+{
+  "name": "scrapednews",
+  "version": "1.0.0",
+  "description": "All the News That's Fit to Scrape",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jetsgreen/scrapedNews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jetsgreen/scrapedNews/issues"
+  },
+  "homepage": "https://github.com/jetsgreen/scrapedNews#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "logger": "0.0.1",
+    "mongoose": "^5.8.9"
+  }
+}
