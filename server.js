@@ -40,27 +40,32 @@ app.get("/scrape", function(req, res) {
 
       $("h4").each(function(i, element) {
         // Save an empty result object
-        var result = {};
+        let result = {};
 
         result.headline = $(this).text();
         // result.summary= $(element).text("summary");
+        // let summary = ($(this).find("span").text());
+        // console.log($(this).find("span").text());
+        let href = ($(this).children().attr("href"))
+        
+        
+        result.link = `http://newjersey.news12.com/${href}`
+      
         // result.link = $(element).children("a").attr("href");
-        
-        
-        
+      
         console.log(result);
         db.Article.create(result)
         .then(function(dbArticle) {
-          // View the added result in the console
+        //   // View the added result in the console
           console.log(dbArticle);
         })
         .catch(function(err) {
-          // If an error occurred, log it
+        //   // If an error occurred, log it
           console.log(err);
         });
        
       });
-  
+     
       // Send a message to the client
       res.send("Scrape Complete");
     });
