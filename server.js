@@ -38,21 +38,18 @@ app.get("/scrape", function(req, res) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
 
-      $("h4").each(function(i, element) {
+      $("li").each(function(i, element) {
         // Save an empty result object
         let result = {};
 
         
-        result.headline =$(this).text();
-       
-        console.log(result)
-        // result.summary= $(this).children().text()
-       
-        // console.log(result.summary);
-        let href = ($(this).children().attr("href"))
+        result.headline =$(this).children(".abridged").children("a").children("span").text();
+        result.summary =$(this).children(".summary").children("span").text();
         
+           
+        let href = ($(this).children(".abridged").children("a").attr("href"));
         
-        result.link = `http://newjersey.news12.com/${href}`
+        result.link = `http://newjersey.news12.com${href}`
       
         // result.link = $(element).children("a").attr("href");
       

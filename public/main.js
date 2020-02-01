@@ -4,7 +4,7 @@ $.getJSON("/articles", function (data) {
   // For each one
   for (var i = 0; i < data.length; i++) {
     // Display the apropos information on the page
-    $("#articles").append("<p class= 'news' data-id='" + data[i]._id + "'>" + data[i].headline + "</br>" + data[i].link  +"</p>");
+    $("#articles").append("<h3 class= 'news' data-id='" + data[i]._id + "'>" +  data[i].headline +  "</h3>" + "</br>" + data[i].summary + "</br>" + "<a href = '" + data[i].link + "'>" + data[i].link + "</a>" );
   }
 });
 $("#clear").on("click", function(){
@@ -13,7 +13,7 @@ $("#clear").on("click", function(){
 })
 });
 
-$(document).on("click", "p", function () {
+$(document).on("click", "h3", function () {
   
 
     var thisId = $(this).attr("data-id");
