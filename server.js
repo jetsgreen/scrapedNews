@@ -42,10 +42,13 @@ app.get("/scrape", function(req, res) {
         // Save an empty result object
         let result = {};
 
-        result.headline = $(this).text();
-        // result.summary= $(element).text("summary");
-        // let summary = ($(this).find("span").text());
-        // console.log($(this).find("span").text());
+        
+        result.headline =$(this).text();
+       
+        console.log(result)
+        // result.summary= $(this).children().text()
+       
+        // console.log(result.summary);
         let href = ($(this).children().attr("href"))
         
         
@@ -53,7 +56,7 @@ app.get("/scrape", function(req, res) {
       
         // result.link = $(element).children("a").attr("href");
       
-        console.log(result);
+       
         db.Article.create(result)
         .then(function(dbArticle) {
         //   // View the added result in the console
