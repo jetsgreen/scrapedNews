@@ -29,9 +29,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<dbuser>:<dbpassword>@ds153729.mlab.com:53729/heroku_64j4rwv1";
-
-mongoose.connect(MONGODB_URI);
+mongoose.connect("mongodb://localhost/mongoHeadlines", { useNewUrlParser: true });
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {

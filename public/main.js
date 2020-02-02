@@ -6,6 +6,7 @@ $.getJSON("/articles", function (data) {
     // Display the apropos information on the page
     $("#articles").append("<h3 class= 'news' data-id='" + data[i]._id + "'>" +  data[i].headline +  "</h3>" + "</br>" + data[i].summary + "</br>" + "<a href = '" + data[i].link + "'>" + data[i].link + "</a>" );
   }
+  
 });
 $("#clear").on("click", function(){
   $("#articles").empty();
@@ -24,8 +25,8 @@ $(document).on("click", "h3", function () {
     }).then(function(data){
       console.log(data);
       // The title of the article
-      $("#note").append("<h2>" + data.headline + "</h2>" + "<ul><input id='titleinput' name='title' placeholder='title' ></ul>"  + 
-      "<ul><textarea id='bodyinput' name='body' > </textarea></ul>"  + "<button data-id='" + data._id + "' id='addcomment'>Add Comment</button>" );
+      $("#note").append("<h2>" + data.headline + "</h2>" + "<ul><input id='titleinput' name='title' placeholder='subject' ></ul>"  + 
+      "<ul><textarea id='bodyinput' name='body' > </textarea></ul>"  + "<button type='button' class='btn btn-primary' data-id='" + data._id + "' id='addcomment'>Add Comment</button>" );
       
       
       // If there's a note in the article
@@ -40,7 +41,25 @@ $(document).on("click", "h3", function () {
     $(document).on("click", "#addcomment", function() {
       // Grab the id associated with the article from the submit button
     
+      function validateForm() {
+        var isValid = true;
+        $("#titleinput").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
 
+        $("#bodyinput").each(function() {
+
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
+      if (validateForm()) {
+
+     
       var thisId = $(this).attr("data-id");
     
       // Run a POST request to change the note, using what's entered in the inputs
@@ -67,10 +86,13 @@ $(document).on("click", "h3", function () {
          })
         
         });
-    
+      }else {
+        alert("Please fill all fields before adding comment")
+      };
       // Also, remove the values entered in the input and textarea for note entry
       $("#titleinput").val("");
       $("#bodyinput").val("");
+   
     });
     
 
