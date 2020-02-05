@@ -61,7 +61,7 @@ app.get("/scrape", function(req, res) {
         // result.link = $(element).children("a").attr("href");
       
        
-        db.Article.create(result)
+        db.Test.create(result)
         .then(function(dbArticle) {
         //   // View the added result in the console
           console.log(dbArticle);
@@ -80,7 +80,7 @@ app.get("/scrape", function(req, res) {
 
 app.get("/articles", function(req, res) {
     // Grab every document in the Articles collection
-    db.Article.find({})
+    db.Test.find({})
       .then(function(dbArticle) {
         // If we were able to successfully find Articles, send them back to the client
         res.json(dbArticle);
@@ -93,7 +93,7 @@ app.get("/articles", function(req, res) {
 
   app.get("/articles/:id", function(req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-    db.Article.findOne({ _id: req.params.id })
+    db.Test.findOne({ _id: req.params.id })
       // ..and populate all of the notes associated with it
       .populate("Note")
       .then(function(dbArticle) {
