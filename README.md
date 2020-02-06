@@ -1,7 +1,7 @@
 # All-the-News-That-s-Fit-to-Scrape
 All the News That's Fit to Scrape is an application that lets users scrape news articles from News12.com(New Jersey local news) . Users can then view and leave comments onarticl es. This app uses Cheerio to scrape news from News 12 and stores them in MongoDB using Mongoose.
 
-Please Click on this [link](https://dashboard.heroku.com/apps/salty-peak-07005) to Check the App out.
+Please Click on this [link](https://salty-peak-07005.herokuapp.com/) to Check the App out.
 
 ## Technologies
 
